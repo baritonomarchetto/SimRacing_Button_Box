@@ -1,5 +1,6 @@
 # DESCRIPTION
 An arduino-based, features-loaded Sim Racing button box interface.
+More detailes info and loads of pictures [HERE](https://www.instructables.com/Stand-Alone-SimRacing-Multi-HID-Interface/) (Instructables).
 
 # FEATURES
 - multi HID emulation: keyboard, joystick and mouse in the same device
