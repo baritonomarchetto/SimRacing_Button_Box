@@ -30,6 +30,7 @@ The maximum number of outputs is 24. Even if LEDs absorb a limited current, shif
 As said, if the number of LEDs is limited, one could juice them with USB power, but what if the number of LEDs increse? Again, what if some of those LEDs are actually +12V LEDs and not +5V?I was open to no compromises here (as much as possible), then I ended laying out a tunable driver circuit for LEDs. In other words, the user can select to power any of the Darlinghton arrays from USB or an external source (+12V MAX!), independently. The power source of any Darlinghton array is independend from the other two, leaving the user the choice. In other words, one could power two Darlington's with USB and one with +12V from an external source, or all with external +5V, as a function of the nature and number of buttons in use.
 
 A dedicated LED shows the presence of external power.
+
 ## Layout
 This PCB is intended to be placed somewhere on box "bottom" and wired to elements through cables. I preferred this approach to the "elements on the PCB" one because:
 
@@ -46,6 +47,7 @@ AUX1, 2 and 3 are inputs directly connected to microcontroller GPIOs. These are 
 L01-L24 are LEDs outputs. As said, LEDs are driven by three independent ULN2803, each powered by a user definable source. This source could be 5V coming from USB, or an external power source, the selection being dependend on the total current your LEDs will sink and working tension. The external power source can be, in example, 12V, but also 5V if you are worried that the current needed could exceed the 500 mA a common USB port can source.
 
 Please, notice that LED pads goes to LEDs negative leg (sinking configuration). The positive leg must be connected to the relative power source (LA+, LB+ or LC+).
+
 # FIRMWARE
 I wrote a generic firmware in order to give you maximum flexibility in layout design. The firmware is written to perform simple tasks (nothing too fancy) in order to be a good starting point for any project.
 Arduino makes things easy because of it's open libraries. Here I have used Mattew Heironimus joystick library and some offical library (Mouse, Keyboard and SPI). Official arduino libraries are installed by default on the IDE; Mattew's lib must be installed instead.
