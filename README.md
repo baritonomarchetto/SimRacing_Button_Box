@@ -1,4 +1,4 @@
-# THE PROJECT
+# DESCRIPTION
 An arduino-based, features-loaded Sim Racing button box interface.
 
 # FEATURES
