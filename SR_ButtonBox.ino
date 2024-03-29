@@ -27,8 +27,8 @@
 #define REG_LEDS 24 //number of LEDs
 #define ROTARIES 3 //number of rotary encoders
 
-#define MOUSE_LEFT 251
-#define MOUSE_RIGHT 252
+#define M_LEFT 251
+#define M_RIGHT 252
 #define NULL 255
 
 //SHIFT REGISTERS
@@ -91,7 +91,7 @@
   //251 and 252 are assigned to mouse left and right click. 256 to "null"
   //https://www.arduino.cc/reference/en/language/functions/usb/keyboard/keyboardmodifiers/
   const byte keybtn[REG_SWITCH] = {KEY_ESC, KEY_RETURN, 2, 3, 4, 5, 6, 7, 
-                                  NULL, 9, MOUSE_LEFT, 11, 12, 13, 14, 15, 
+                                  NULL, 9, M_LEFT, 11, 12, 13, 14, 15, 
                                   16, 17, 18, 19, 20, 21, 22, 23};
 
 //chat
@@ -174,13 +174,13 @@ void InRegHandle(){ //Handle registry inputs (74HC165)
           }
         }
         //MOUSE
-        else if(keybtn[i+(a*8)] == MOUSE_LEFT){//MOUSE left click
+        else if(keybtn[i+(a*8)] == M_LEFT){//MOUSE left click
           if (iState > 0){//BUTTON PRESSED
             Mouse.click(MOUSE_LEFT);
             delay(10);
           }
         }
-        else if(keybtn[i+(a*8)] == MOUSE_RIGHT){//MOUSE RIGHT click
+        else if(keybtn[i+(a*8)] == M_RIGHT){//MOUSE RIGHT click
           if (iState > 0){//BUTTON PRESSED
             Mouse.click(MOUSE_RIGHT);
             delay(10);
