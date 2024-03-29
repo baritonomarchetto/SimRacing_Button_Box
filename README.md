@@ -49,12 +49,17 @@ Please, notice that LED pads goes to LEDs negative leg (sinking configuration). 
 # FIRMWARE
 I wrote a generic firmware in order to give you maximum flexibility in layout design. The firmware is written to perform simple tasks (nothing too fancy) in order to be a good starting point for any project.
 Arduino makes things easy because of it's open libraries. Here I have used Mattew Heironimus joystick library and some offical library (Mouse, Keyboard and SPI). Official arduino libraries are installed by default on the IDE; Mattew's lib must be installed instead.
+
 Switches functions are triggered at state change only. This keeps the MPU cool, but also makes the use of momentary switches and latching switches interchangeable, without the need to treat them differently at coding level or adopting special hardware configurations. Box buttons can be freely assigned to joystick buttons (up to #24), keyboard keys (ASCII format) or mouse buttons. I assigned keyboard keys "ESC" and "ENTER" to two buttons. I also assigned left mouse click to another. All the other are joystick buttons.
+
 In normal operation mode all LEDs are on.
+
 When the mode toggling button is pressed, chat box mode is activated. In this mode the press of some button sends whole phrases to the chat. In chat box mode LEDs blink in order to give user a visual feedback. Phrases can be freely defined by the user and assigned to any button. To confirm and send to the outher world a phrase press "ENTER", to delete it press "ESC" (this at least if how it works in ACC).
 The firmware emulates a mouse controlled by the analog joystick. The farther from the center the joystick lever, the faster the mouse movement.
 Rotary (optical) encoders are read through a 1X counting routine. To avoid rotation losses even at high speeds, one of the two encoder optics is attached to MPU's interrupts pins, then hardware filtered (see previous step).
+
 Please notice that even if rotary encoders are supported, I made a stupid mistake in my prototipe of the board such that I could not test the code (not with the PCB, at least). The shared PCB has been corrected, but I have not a copy of it to test the code and the fixed circuit. 
+
 Don't like the overall behaviour or have in mind some groundbreaking features? Perfect! This project is open-firmware which means that you can modify it's core at your will, even with limited coding skills (it's arduino magic people!).
 
 # ACKNOWLEDGMENTS
@@ -62,6 +67,8 @@ Many thanks to those nice girls and guys at JLCPCB for sponsoring the manufactur
 JLCPCB is a high-tech manufacturer specialized in the production of high-reliable and cost-effective PCBs. They offer a flexible PCB assembly service with a huge library of more than 350.000 components in stock.
 3D printing is part of their portfolio of services so one could create a full finished product, all in one place!
 By registering at JLCPCB site via [THIS LINK](https://jlcpcb.com/IAT) (affiliated link) you will receive a series of coupons for your orders. Registering costs nothing, so it could be the right opportunity to give their service a due try ;)
+
 All Gerber files, sketches and utilities I realized for this project are stored in this Github repo. I always upload the most recent file's versions, so it could be the case that some PCB looks a little different from those pictured in my instructables.
+
 My projects are free and for everybody. You are anyway welcome if you want to donate some change to help me cover components costs and push the development of new projects.
 My paypal donation page is [HERE](https://paypal.me/GuidolinMarco?country.x=IT&locale.x=it_IT), just in case ;)
