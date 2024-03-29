@@ -17,7 +17,9 @@ An arduino-based, features-loaded Sim Racing button box interface.
 I want my button box to host at least one analog joystick for mouse emulation and at least two rotary encoders. All the other elements are momentary or latching switches/buttons/levers.
 
 To increase the interface flexibility, two analog joysticks are actually supported which means four analog axis in total. Arduino's analog GPIOs used are A0, A1 and A2, A3.
+
 Rotary encoders call for two digital GPIOs each. In my experience rotary encoders work best with interrupt routines, so arduino pro-micro's pins 0, 1, 2, 3 and 7 are the candidates. Three rotaries are here supported, with interrupt routines assigned to pins 2, 3 and 7.
+
 To receive-data-from and send-data-to shift registers I have candidated the use of Serial Peripheral Interface (SPI) protocol. This reserves pins 16 (MOSI), 14 (MISO) and 15 (SCLK), PLUS two latch pins, one for inputs, the other for outputs.
 ## Integrated Circuits
 This PCB is intended to be feature-loaded but "generic", meaning "also usable in button box configurations different from mine". This is why I extended the number of inputs to 24 even if I used only a few in my box. The standard detection limit of joystick buttons in most softwares is 32, so 8 inputs are left for rotary encoders (one for every direction, so two each) and auxiliary switches. Rotaries (buffered, see next) and auxiliaries are directly handled by the microcontroller through dedicated GPIOs, which spares a shift register to the total count.
