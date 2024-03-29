@@ -24,21 +24,28 @@ To receive-data-from and send-data-to shift registers I have candidated the use 
 ## Integrated Circuits
 This PCB is intended to be feature-loaded but "generic", meaning "also usable in button box configurations different from mine". This is why I extended the number of inputs to 24 even if I used only a few in my box. The standard detection limit of joystick buttons in most softwares is 32, so 8 inputs are left for rotary encoders (one for every direction, so two each) and auxiliary switches. Rotaries (buffered, see next) and auxiliaries are directly handled by the microcontroller through dedicated GPIOs, which spares a shift register to the total count.
 Rotative encoders signals are buffered via a 74HC14N Hex Inverting Schmitt trigger. This cleans the signal and makes it easier for the microcontroller to detect state changes. In my experience (mostly in the arcade world) this solution makes a world of difference.
+
 The maximum number of outputs is 24. Even if LEDs absorb a limited current, shift registers are not intended to drive them directly. This means that a driver circuit is in the need. Three ULN2803 high-voltage, high-current Darlington arrays each containing eight open collector Darlington pairs with common emitters are here used to drive LEDs.
+
 As said, if the number of LEDs is limited, one could juice them with USB power, but what if the number of LEDs increse? Again, what if some of those LEDs are actually +12V LEDs and not +5V?I was open to no compromises here (as much as possible), then I ended laying out a tunable driver circuit for LEDs. In other words, the user can select to power any of the Darlinghton arrays from USB or an external source (+12V MAX!), independently. The power source of any Darlinghton array is independend from the other two, leaving the user the choice. In other words, one could power two Darlington's with USB and one with +12V from an external source, or all with external +5V, as a function of the nature and number of buttons in use.
+
 A dedicated LED shows the presence of external power.
 ## Layout
 This PCB is intended to be placed somewhere on box "bottom" and wired to elements through cables. I preferred this approach to the "elements on the PCB" one because:
+
 (a) leaves more elements choice (you are not forced to use those very specific elements matching the PCB footprint)
+
 (b) limits PCB dimensions
+
 Inputs and outputs have dedicated pads for direct soldering in exclusive PCB's areas with due labelling for easier identification:
 B01-B24 are generic inputs. Buttons are obvious here, but any switch-based device would work such as a shifter, pedal, hand brake and so on. These are handled through the input shift registers
 J1X, J1Y and J2X, J2Y are analog inputs. Any of these correspond to a single analog axis, then two joysticks in total. These are directly handled by the microcontroller board.
 R1A, R1B, R2A, R2B and R3A, R3B are the three couples of inputs for incremental rotary encoders. These are buffered first, then enter dedicated microcontroller GPIO's. R1A, R2A and R3A are connected to interrupt GPIOs.
+
 AUX1, 2 and 3 are inputs directly connected to microcontroller GPIOs. These are intended for special function such as shift, page selection etc etc.
 L01-L24 are LEDs outputs. As said, LEDs are driven by three independent ULN2803, each powered by a user definable source. This source could be 5V coming from USB, or an external power source, the selection being dependend on the total current your LEDs will sink and working tension. The external power source can be, in example, 12V, but also 5V if you are worried that the current needed could exceed the 500 mA a common USB port can source.
-Please, notice that LED pads goes to LEDs negative leg (sinking configuration). The positive leg must be connected to the relative power source (LA+, LB+ or LC+).
 
+Please, notice that LED pads goes to LEDs negative leg (sinking configuration). The positive leg must be connected to the relative power source (LA+, LB+ or LC+).
 # FIRMWARE
 I wrote a generic firmware in order to give you maximum flexibility in layout design. The firmware is written to perform simple tasks (nothing too fancy) in order to be a good starting point for any project.
 Arduino makes things easy because of it's open libraries. Here I have used Mattew Heironimus joystick library and some offical library (Mouse, Keyboard and SPI). Official arduino libraries are installed by default on the IDE; Mattew's lib must be installed instead.
