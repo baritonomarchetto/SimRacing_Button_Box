@@ -62,6 +62,7 @@ When the mode toggling button is pressed, chat box mode is activated. In this mo
 The firmware emulates a mouse controlled by the analog joystick. The farther from the center the joystick lever, the faster the mouse movement.
 Rotary (optical) encoders are read through a 1X counting routine. To avoid rotation losses even at high speeds, one of the two encoder optics is attached to MPU's interrupts pins, then hardware filtered (see previous step).
 
+[!WARNING]
 Please notice that even if rotary encoders are supported, I made a stupid mistake in my prototipe of the board such that I could not test the code (not with the PCB, at least). The shared PCB has been corrected, but I have not a copy of it to test the code and the fixed circuit. 
 
 Don't like the overall behaviour or have in mind some groundbreaking features? Perfect! This project is open-firmware which means that you can modify it's core at your will, even with limited coding skills (it's arduino magic people!).
